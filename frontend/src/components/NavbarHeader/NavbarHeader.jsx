@@ -1,0 +1,144 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHeart,
+  faEnvelope,
+  faBell,
+  faCartShopping
+} from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
+import "./styles.scss";
+
+const NavebarHeader = () => {
+  return (
+    <>
+      <div className="header_container border-bottom ">
+        <div className="logo">
+          <h1>Logo</h1>
+        </div>
+        <div className="navs_container">
+          <ul className="navs">
+            <li className="ms-5">
+              <NavLink
+                to="/student/courses"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                Courses
+              </NavLink>
+            </li>
+            <li className="ms-5">
+              <NavLink
+                to="/student/MyCourses"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                MyCourses
+              </NavLink>
+            </li>
+            <li className="ms-5">
+              <NavLink
+                to="/student/Practices"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                Practices
+              </NavLink>
+            </li>
+            <li className="ms-5">
+              <NavLink
+                to="/student/Test"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                Test
+              </NavLink>
+            </li>
+            <li className="ms-5">
+              <NavLink
+                to="/student/Jobs"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                Jobs
+              </NavLink>
+            </li>
+            <li className="ms-5">
+              <NavLink
+                to="/student/OurSolution"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                Our solutions
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        <div
+          style={{
+            width: "2px",
+            height: "30%",
+            backgroundColor: "rgba(0, 0, 0, 0.20)"
+          }}
+        ></div>
+
+        <div className="icons_container">
+          <ul className="navs">
+            <li className="nav_icon">
+              <NavLink
+                to="faverate"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                <FontAwesomeIcon icon={faHeart} />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="messages"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                <FontAwesomeIcon icon={faEnvelope} />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="Notification"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                <FontAwesomeIcon icon={faBell} />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="AddToCard"
+                style={({ isActive }) => ({
+                  color: isActive ? "#825CFE" : "black"
+                })}
+              >
+                <FontAwesomeIcon icon={faCartShopping} />
+              </NavLink>
+            </li>
+            <li>
+              <div className="flex prfName">MW</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default NavebarHeader;

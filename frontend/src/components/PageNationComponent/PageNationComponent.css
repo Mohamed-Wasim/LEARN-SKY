@@ -1,0 +1,22 @@
+.pgNatnCont{
+    border:1px solid rgba(0, 0, 0, 0.300);
+    width:600px;
+    height:38px;
+    border-radius:6px;
+    justify-content:initial !important;
+    gap:0;
+}
+.pgNatnCont div{
+    border:1px solid rgba(0, 0, 0, 0.300);
+    padding:8px;
+    width:100%;
+    justify-content:center;
+}
+.pgNatnCont button{
+    border:none;
+    color:white;
+    padding:0 10px;
+    display:inline-block;
+    height:100%;
+    background-color:rebeccapurple;
+}

@@ -1,0 +1,54 @@
+.date-picker {
+  border: solid 1px #dfe1e5;
+  border-radius: 4px;
+  width: 100%;
+  padding: 0.5rem 2.625rem 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  background-color: #ffffff;
+}
+
+.date-picker:focus-within {
+  border: solid 1px #0d9be1;
+}
+.date-picker_block {
+  width: 100%;
+}
+
+.rdt > .form-control:focus {
+  box-shadow: none !important;
+}
+.rdt > .form-control {
+  padding: 0;
+  border: none;
+  font-size: 14px;
+}
+.rdtPicker {
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 300px;
+  left: -50px;
+}
+.rdtPicker td,
+.rdtPicker th {
+  height: 40px;
+}
+.rdtPicker td.rdtActive,
+.rdtPicker td.rdtActive:hover {
+  background-color: #009ce9;
+  color: #fff;
+  border-radius: 4px;
+}
+.rdtPicker td.rdtToday:before {
+  display: none;
+}
+.rdtPicker .rdtTimeToggle {
+  background-color: #f4f5f7;
+  border-radius: 8px;
+}
+.rdtSwitch {
+  background-color: #f4f5f7;
+  border-radius: 8px;
+}
+.rdtPicker th.rdtSwitch {
+  background-color: #ffffff;
+}

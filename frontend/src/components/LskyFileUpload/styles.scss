@@ -1,0 +1,59 @@
+/* styles.css */
+
+.Lsky-file_dnd {
+  border: 1px dashed #ccc;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f7f7f7;
+  transition: border-color 0.3s ease-in-out;
+  user-select: none;
+  display: flex;
+  border-radius: 4px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.drag-txt {
+  color: #7f8a9d;
+  margin: 0;
+}
+.drop-or {
+  margin-left: 10px;
+  color: #7f8a9d;
+}
+.Lsky-file_dnd.dragging {
+  border-color: #007bff;
+  background-color: #e6f7ff;
+}
+
+.Lsky-file_dnd input[type='file'] {
+  display: none;
+}
+
+/* Optional styles for the "Or Drag and Drop File Here" text */
+.Lsky-file_dnd span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+.file-btn {
+  padding: 6px;
+  margin-bottom: 0px !important;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.selective-file {
+  color: #7f8a9d;
+  font-size: 14px;
+  margin-bottom: 0px !important;
+}
+
+.file-wrapper {
+  position: relative;
+  .file-clear {
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: 4px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,21 @@
+.offcanvas-header {
+  padding: 1.5rem;
+  background-color: #fafbfc;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+  gap: 12px;
+  border-bottom: solid 1px #dfe1e5;
+}
+.offcanvas-title {
+  border-left: solid 1px #dfe1e5;
+  padding-left: 1rem;
+  margin-left: 0.5rem;
+}
+.offcanvas-header .btn-close {
+  color: #495973;
+}
+.offcanvas-body {
+  padding: 1rem;
+}

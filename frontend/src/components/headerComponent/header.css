@@ -1,0 +1,15 @@
+/* RE-USABLE CODES */
+.flex{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+}
+.header_container{
+    border:1px solid rgba(0, 0, 0, 0.100);
+    padding:0 60px 10px 60px;
+    /* box-shadow: 30 0 0 black; */
+    height:80px;
+    margin-bottom:20px;
+    gap:0px;
+}

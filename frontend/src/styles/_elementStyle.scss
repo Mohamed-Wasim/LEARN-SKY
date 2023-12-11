@@ -1,0 +1,175 @@
+@import './colorsStyle';
+@import './fontStyle';
+
+.header-cont_label {
+  font-size: map-get($font-sizes, 'large');
+  color: map-get($font-color, 'default');
+  font-weight: map-get($font-weight, 'large-weight');
+  margin: 0;
+}
+
+.sub-header_label {
+  font-size: map-get($font-sizes, 'xx-small');
+  color: map-get($font-color, 'subdued');
+  font-weight: map-get($font-weight, 'normal-weight');
+  margin: 0;
+}
+
+.primary-cont_label {
+  font-size: map-get($font-sizes, 'small');
+  color: map-get($font-color, 'default');
+  margin: 0;
+}
+
+.primary-cont_small {
+  font-size: map-get($font-sizes, 'x-small');
+  color: map-get($font-color, 'default');
+}
+
+.primary-cont_bold {
+  font-size: map-get($font-sizes, 'normal');
+  color: map-get($font-color, 'default');
+  font-weight: map-get($font-weight, 'normal-weight');
+  margin: 0;
+}
+
+.secondary-cont_label {
+  font-size: map-get($font-sizes, 'small');
+  color: map-get($font-color, 'subdued');
+  margin: 0;
+}
+
+.secondary-cont_small {
+  font-size: map-get($font-sizes, 'x-small');
+  color: map-get($font-color, 'subdued');
+  margin: 0;
+}
+
+.secondary-cont_bold {
+  font-size: map-get($font-sizes, 'normal');
+  color: map-get($font-color, 'subdued');
+  font-weight: map-get($font-weight, 'normal-weight');
+  margin: 0;
+}
+
+.link-cont_label {
+  font-size: map-get($font-sizes, 'small');
+  color: map-get($font-color, 'link');
+  font-weight: map-get($font-weight, 'normal-weight');
+  margin: 0;
+}
+
+// .........Element behaviour css.....................//
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-break {
+  word-break: break-all;
+}
+
+// .........Element space css.....................//
+
+.padding-bt_4 {
+  padding-bottom: 4px;
+}
+
+.padding-bt_8 {
+  padding-bottom: 8px;
+}
+
+.padding-bt_12 {
+  padding-bottom: 12px;
+}
+
+.padding-bt_16 {
+  padding-bottom: 16px;
+}
+
+.padding-tp_4 {
+  padding-top: 4px;
+}
+
+.padding-tp_8 {
+  padding-top: 8px;
+}
+
+.padding-tp_12 {
+  padding-top: 12px;
+}
+
+.padding-tp_16 {
+  padding-top: 16px;
+}
+
+.margin-bt_4 {
+  margin-bottom: 4px;
+}
+
+.margin-bt_8 {
+  margin-bottom: 8px;
+}
+
+.margin-bt_12 {
+  margin-bottom: 12px;
+}
+
+.margin-bt_16 {
+  margin-bottom: 16px;
+}
+
+.margin-tp_4 {
+  margin-top: 4px;
+}
+
+.margin-tp_8 {
+  margin-top: 8px;
+}
+
+.margin-tp_12 {
+  margin-top: 12px;
+}
+
+.margin-tp_16 {
+  margin-top: 16px;
+}
+
+// .........component level css.....................//
+
+.container-block {
+  background-color: map-get($bg-color, 'navigation');
+  border-radius: 12px;
+}
+
+// .........custom scroll css.....................//
+
+.custom-scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #ebedf0;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 0px rgba(0, 0, 0, 0.3);
+  background-color: #bcc2cc;
+}

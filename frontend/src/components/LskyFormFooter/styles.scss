@@ -1,0 +1,18 @@
+.footer-btn_view {
+  background-color: #ffffff;
+  padding: 1rem 1.5rem;
+  box-shadow:
+    0px 4px 20px 0px rgba(9, 30, 66, 0.15),
+    0px 0px 3px 0px rgba(9, 30, 66, 0.1);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  position: fixed;
+  bottom: 0.75rem;
+  width: auto;
+  right: 6rem;
+  left: 16rem;
+  z-index: 1;
+}

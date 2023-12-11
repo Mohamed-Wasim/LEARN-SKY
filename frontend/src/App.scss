@@ -1,0 +1,25 @@
+@import '../customtheme.scss';
+$theme-colors: (
+  'primary': #006fac,
+  'secondary': #495973,
+  'success': #469b1f,
+  'info': #bf8012,
+  'warning': #f24b6b,
+  'danger': #f24b6b,
+  'light': #ffffff,
+  'dark': #000000
+);
+$primary: #006fac;
+@font-face {
+  font-family: 'Manrope';
+  src:
+    local('Manrope'),
+    url(../public/font/Manrope/Manrope-VariableFont_wght.ttf) format('woff');
+}
+
+body {
+  font-family: 'Manrope' !important;
+  padding: 0;
+  margin: 0;
+  background-color: #c5c7c8 !important;
+}

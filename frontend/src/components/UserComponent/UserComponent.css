@@ -1,0 +1,21 @@
+.prfName{
+    width:28px;
+    height:28px;
+    border-radius:50px;
+    background-color:rebeccapurple;
+    color:white;
+    font-size:10px;
+    letter-spacing:2%;
+
+    justify-content:center !important;
+    position: relative;
+}
+/* .prfName:hover{
+    width:300px;
+    height:300px;
+    background-color:green;
+    
+    position:absolute;
+    top:100px;
+    left:100px;
+} */

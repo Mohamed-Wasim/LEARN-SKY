@@ -1,0 +1,27 @@
+.require::after {
+  content: '*';
+  color: #e21d12;
+  margin-left: 5px;
+}
+.form-check-input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+}
+.form-check-input[type='radio'] {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.form-switch .form-check-input[type='checkbox'] {
+  width: 2rem;
+  height: 1.25rem;
+}
+.form-check-label {
+  padding: 0 0.5rem;
+  position: relative;
+  // top: 3px;
+}
+.form-check-input:focus,
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+}
