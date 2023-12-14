@@ -15,9 +15,9 @@ const CourseCardComponent = ({ course, addToCart }) => {
   return (
     <Card
       style={{
-        width: "20rem",
+        width: "25rem",
         height: "25rem",
-        boxShadow: "4px 4px 8px rgba(0, 0, 0, 0.5)",
+        boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
         transition: "box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out",
         cursor: "pointer"
       }}
