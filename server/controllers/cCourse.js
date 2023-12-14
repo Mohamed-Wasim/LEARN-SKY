@@ -412,7 +412,7 @@ exports.fetchCoursesEx = function (req, res) {
   // const oRes = _.groupBy(docs, "crsCat");
   res.status(200).json({ oCourses: docs });
 
-  // exports.fetchCoursesIn({}, (err, docs) => {
+  // exports.fetchCoursesIn(req.body, (err, docs) => {
   //   if (err) {
   //     res.status(500).json({ error: "Error finding courses" }, null);
   //   } else if (docs && docs.length) {
@@ -428,7 +428,7 @@ exports.fetchCoursesEx = function (req, res) {
  * @param {any ids} req
  * @response {Response coourses} res
  */
-exports.fetchCoursesIn = function (oReq, callback) {
+exports.fetchCoursesIn = async function (oReq, callback) {
   const oQuery = {
     $and: []
   };
@@ -437,9 +437,22 @@ exports.fetchCoursesIn = function (oReq, callback) {
     oQuery.$and.push({ crsType: crsType });
   }
 
+  if (oReq?.aCrsIds?.length > 0) {
+    oQuery.$and.push({ _id: { $in: aCrsIds } });
+  }
+
   let oProj = {};
   if (oReq?.oProj) {
     oProj = oReq.oProj;
   }
-  mCourse.find(oQuery, oProj, { lean: true }, callback);
+  try {
+    const data = await mCourse.find(oQuery, oProj).lean();
+    if (data?.length) {
+      callback({ status: "200", data: data });
+    } else {
+      callback({ status: "200", code: "NO_DATA_FOUND" });
+    }
+  } catch (error) {
+    callback({ status: "500", err });
+  }
 };

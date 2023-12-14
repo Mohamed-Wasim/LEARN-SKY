@@ -7,6 +7,7 @@ const routes = express();
 routes.post("/register", cStudent.createStudent);
 routes.post("/login", cStudent.logInStudent);
 routes.get("/fetch-courses", cCourse.fetchCoursesEx);
+routes.get("/fetch-my-courses", cStudent.fetchStuCoursesEx);
 routes.post("/add-course-to-cart", cStudent.addCourseToCart);
 
 module.exports = routes;

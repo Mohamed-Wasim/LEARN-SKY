@@ -10,7 +10,7 @@ import CourseCardComponent from "../../../components/CourseCardComponent/CourseC
 const LiveCourses = () => {
   const { t } = useTranslation(); //translator
   const [oCorses, setcourses] = useState([]); // corses group by course catagory
-  const loginStuId = useSharedService("getStuDetailes", null, "_id"); //student id
+  const loginStuDet = useSharedService("getStuDetailes"); //student id
 
   /* To get live courses */
   const getLiveCourses = async () => {
@@ -29,7 +29,7 @@ const LiveCourses = () => {
   /* To add courses to cart */
   const addToCart = async (crsId) => {
     const oReqObj = {
-      stuId: loginStuId,
+      stuId: loginStuDet._id,
       coursId: crsId
     };
     try {
@@ -57,7 +57,11 @@ const LiveCourses = () => {
               key={index}
               className="col-md-4 mb-4 d-flex justify-content-center align-items-center"
             >
-              <CourseCardComponent course={crs} addToCart={addToCart} />
+              <CourseCardComponent
+                course={crs}
+                addToCart={addToCart}
+                aCartCrs={loginStuDet?.cartCourse}
+              />
             </div>
           ))}
       </div>

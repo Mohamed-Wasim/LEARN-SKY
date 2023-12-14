@@ -28,7 +28,7 @@ const rootReducer = (state, action) => {
 const persistConfig = {
   key: "root", // Key for the root level of your Redux store
   storage, // Storage engine to use (e.g., localStorage, sessionStorage)
-  whitelist: ["user", "device", "common"] // Specify the state slices to persist
+  whitelist: ["student", "device", "common"] // Specify the state slices to persist
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -7,8 +7,10 @@ import {
 import React, { Suspense } from "react";
 import AuthRoutes from "../src/routes/AuthRoutes";
 import StudentRoutes from "../src/routes/StudentRoutes";
+import AdminRoutes from "../src/routes/AdminRoutes";
 import "@material-symbols/font-400";
 import StudentHome from "./pages/Student/StudentHome/StudentHome";
+import AdminHome from "./pages/Admin/AdminHome/AdminHome";
 import { Container } from "react-bootstrap";
 const router = createBrowserRouter([
   {
@@ -45,14 +47,30 @@ const router = createBrowserRouter([
         errorElement: <ErrorBoundary />
       }
     ]
+  },
+  {
+    path: "/admin",
+    element: <AdminHome />,
+    errorElement: <ErrorBoundary />,
+    children: [
+      {
+        path: "*",
+        element: (
+          <Suspense>
+            <AdminRoutes />
+          </Suspense>
+        ),
+        errorElement: <ErrorBoundary />
+      }
+    ]
   }
 ]);
 
 function App() {
   return (
-    <Container style={{ backgroundColor: "white" }}>
+    <div style={{ backgroundColor: "white" }}>
       <RouterProvider router={router} />
-    </Container>
+    </div>
   );
 }
 

@@ -5,13 +5,17 @@ const Courses = React.lazy(() =>
   import("../pages/Student/Courses/Courses.jsx")
 );
 
-const AdminRoutes = () => {
+const AddCourses = React.lazy(() =>
+  import("../pages/Admin/AdminCourse/AdminCourseForm.jsx")
+);
+
+const StudentRoutes = () => {
   return (
     <Routes>
       {/* <Route path="*" element={<InstitutePage />} /> */}
       <Route path="/courses" element={<Courses />} />
-      {/* <Route path="/courses" element={<StudentLogin />} /> */}
+      <Route path="/Practices" element={<AddCourses />} />
     </Routes>
   );
 };
-export default AdminRoutes;
+export default StudentRoutes;

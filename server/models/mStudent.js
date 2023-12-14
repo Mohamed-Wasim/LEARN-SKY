@@ -39,13 +39,14 @@ const StudentSchema = new mongoose.Schema({
   MoAt: { type: Date, default: Date.now }, //Modified date
   CrBy: { type: String }, //user created By
   MdBy: { type: String }, //Modified by
-  PhotoImgID: { type: String }, //photo Url
+  PhotoImgUrl: { type: String }, //photo Url
   StuSts: { type: String, enum: ["A", "IA", "FIRD"], default: "A" }, //A-currnetly active,IA-in active,FIRD-Fired student
   isIssueCert: { type: Boolean, default: false }, //issued certificate
   RegCourse: [
     {
       //regitered course
       crsId: { type: String }, // course id
+      language: { type: String }, //course register language
       BranchId: { type: String }, // Branch id
       status: {
         type: String,
@@ -68,7 +69,6 @@ const StudentSchema = new mongoose.Schema({
       BalFee: { type: Number } //Balance Fee Amount
     }
   ],
-  savedCourse: { type: Array },
   cartCourse: { type: Array },
   aplidJobs: [
     {
