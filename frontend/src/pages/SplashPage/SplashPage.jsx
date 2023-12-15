@@ -19,7 +19,29 @@ import LskSplashPageHeader from '../../components/LskSplashPageHeader/LskSplashP
 //     faTwitter
 // } from '@fortawesome/free-solid-svg-icons';
 
+// import { fetchCourses } from "../../../services/courseService";
+// import React, { useState, useEffect } from "react";
+
 const SplashPage = () => {
+
+
+//   const [oCorses, setcourses] = useState([]); // corses group by course catagory
+
+//   /* To get all courses */
+//   const getCourses = async () => {
+//     try {
+//       const oCouseRes = await fetchCourses();
+//       setcourses(oCouseRes);
+//     } catch {
+//       LskyToaster(
+//         "error",
+//         t("UNKNOWN_ERROR_PLEASE_CONTACT_YOUR_ADMINISTRATOR"),
+//         3000
+//       );
+//     }
+//   };
+
+
     const count = [1,2,3,4,5,6];
     const footer = [1,2,3];
     const footer1 = [1,2,3,4];
