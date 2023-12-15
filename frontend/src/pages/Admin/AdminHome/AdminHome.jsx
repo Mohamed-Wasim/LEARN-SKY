@@ -7,10 +7,14 @@ const AdminHome = () => {
   return (
     <>
       {/* <AdminSideNav /> */}
-      <AdminHeader />
-      <div className="left-navbar_container">
+
+      <div className="">
         <AdminSideNav />
       </div>
+      <div className="">
+        <AdminHeader />
+      </div>
+
       <main className="admin-main-container_block">
         <Outlet />
       </main>

@@ -25,7 +25,7 @@ const StudentRegister = () => {
     backgroundImage: `url(${image})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    height: "100vh"
+    height: "100"
   };
   const onLogInStudent = async (frmVlus) => {
     try {
@@ -95,7 +95,7 @@ const StudentRegister = () => {
         sm={12}
         md={7}
         lg={7}
-        className=" p-0 ps-1  d-flex align-items-center flex-column justify-content-center"
+        className=" p-0 ps-0  d-flex align-items-center flex-column justify-content-center"
       >
         <LskyFormHeader
           text="REGISTER_AS_STUDENT"

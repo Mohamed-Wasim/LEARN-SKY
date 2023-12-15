@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import ModalBox from 'react-bootstrap/Modal';
-import './styles.scss';
+import React, { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
+import ModalBox from "react-bootstrap/Modal";
+import "./styles.scss";
 import {
   ModalHeader,
   ModalTitle,
   ModalBody,
   ModalFooter
-} from 'react-bootstrap';
+} from "react-bootstrap";
 
 function Modal(props) {
   // const [show, setShow] = useState(false);
@@ -19,11 +19,11 @@ function Modal(props) {
   return (
     <>
       <ModalBox
-        className="modal-default"
+        {...props}
         size={props?.size}
         show={props.showMdl}
         onHide={handleClose}
-        backdrop={props.isBackdropDynamic ? 'dynamic' : 'static'}
+        backdrop={props.isBackdropDynamic ? "dynamic" : "static"}
         keyboard={props.isBackdropDynamic}
       >
         {props.header && (

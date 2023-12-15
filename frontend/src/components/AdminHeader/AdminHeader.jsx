@@ -11,12 +11,10 @@ import { NavLink } from "react-router-dom";
 const AdminHeader = () => {
   return (
     <>
-      <div className="admin-flex admin_header_container">
+      <div className="admin_flex admin_header_container">
+        <div></div>
         <div>
-          <h1>Logo</h1>
-        </div>
-        <div>
-          <ul className="flex">
+          <ul className="admin_flex admin_icon ">
             <li>
               <FontAwesomeIcon icon={faHeart} />
             </li>

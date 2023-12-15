@@ -13,7 +13,7 @@ const NavebarHeader = () => {
   const navigate = useNavigate();
   const loginStuDetatiles = useSharedService("getStuDetailes"); //student detailes
   useEffect(() => {
-    navigate("/student/courses");
+    // navigate("/student/courses");
   }, []);
   return (
     <>
