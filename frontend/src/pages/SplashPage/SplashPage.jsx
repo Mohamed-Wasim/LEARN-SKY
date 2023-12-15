@@ -2,7 +2,7 @@
 // import Card from '../../components/CardComponent/Card';
 import CourseCardComponent from '../../components/CourseCardComponent/CourseCardComponent';
 import LskyButton from '../../components/LskyButton';
-import NavebarHeader from '../../components/NavbarHeader/NavbarHeader';
+// import NavebarHeader from '../../components/NavbarHeader/NavbarHeader';
 import SplashCardComponent from '../../components/SplashCardComponent/SplashCardComponent';
 // import FooterCardComponent from '../../components/FooterCardComponent/FooterCardComponent';
 // import ReviewsCardComponent from '../../components/ReviewsCardComponent/ReviewsCardComponent';
@@ -10,6 +10,8 @@ import Header from '../../components/headerComponent/header';
 import './SplashPage.css';
 import LskCatgoryCardComponent from '../../components/LskCatgoryCardComponent/LskCatgoryCardComponent';
 import LskReviewsCardComponent from '../../components/LskReviewCardComponent/LskReviewCardComponent';
+import LskFooterCardComponent from '../../components/LskFooterCardComponent/LskFooterCardComponent';
+import LskSplashPageHeader from '../../components/LskSplashPageHeader/LskSplashPageHeader';
 // import LksPopupComponent from '../../components/LksPopupComponent/LksPopupComponent';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { 
@@ -34,7 +36,8 @@ const SplashPage = () => {
   return (
     <>
     {/* <Header/> */}
-    <NavebarHeader/>
+    {/* <NavebarHeader/> */}
+    <LskSplashPageHeader/>
     <div className='sp_pg_cont'>
         <div className='flex sp_banner'>
             <div className='sp_banner_cntnt'>
@@ -141,7 +144,11 @@ const SplashPage = () => {
     </div>
     <footer className='sp_ftr_cont'>
         <div className='flex sp_ftr_crdcont'>
-            {/* {footer1.map(() => <FooterCardComponent/>)} */}
+            {footer1.map((category) => <LskFooterCardComponent
+            // key={idx} 
+            styles={category.styles} 
+            // text={category.name} 
+            />)}
         </div>
         <div className='sp_ftr_sec_cont'>
             <div className='flex sp_ftr_sec'>
