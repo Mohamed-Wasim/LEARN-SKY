@@ -1,16 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHeart,
   faEnvelope,
   faBell,
   faCartShopping
 } from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import useSharedService from "../../hooks/useSharedService";
 import "./styles.scss";
 
 const NavebarHeader = () => {
+  const navigate = useNavigate();
+  const loginStuDetatiles = useSharedService("getStuDetailes"); //student detailes
+  useEffect(() => {
+    navigate("/student/courses");
+  }, []);
   return (
     <>
       <div className="header_container border-bottom ">
@@ -91,16 +95,6 @@ const NavebarHeader = () => {
 
         <div className="icons_container">
           <ul className="navs">
-            <li className="nav_icon">
-              <NavLink
-                to="faverate"
-                style={({ isActive }) => ({
-                  color: isActive ? "#825CFE" : "black"
-                })}
-              >
-                <FontAwesomeIcon icon={faHeart} />
-              </NavLink>
-            </li>
             <li>
               <NavLink
                 to="messages"
@@ -132,7 +126,9 @@ const NavebarHeader = () => {
               </NavLink>
             </li>
             <li>
-              <div className="flex prfName">MW</div>
+              <div className="prfName">
+                <img src={loginStuDetatiles?.PhotoImgUrl} alt="" />
+              </div>
             </li>
           </ul>
         </div>

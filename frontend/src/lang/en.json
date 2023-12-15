@@ -23,5 +23,9 @@
   "INVALID_EMAIL_OR_PASSWORD": "Invalid email or password",
   "COURSES_LIBRARY": "Corse Library",
   "LIVE_CLASSES": "Live class",
-  "ADD_TO_CART": "Add to cart"
+  "ADD_TO_CART": "Add to cart",
+  "ADDED": "Added",
+  "COURSE": "Course",
+  "EDIT_COURSE": "Edit course",
+  "CREATE_NEW_COURSE": "Create new course"
 }

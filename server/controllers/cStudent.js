@@ -2,6 +2,8 @@ const express = require("express");
 const utils = require("../routes/apputil");
 const mStudent = require("../models/mStudent");
 const cLogin = require("../controllers/cLogIn");
+const cCourse = require("../controllers/cCourse");
+const _ = require("underscore");
 
 /**
  * Find Student detailes
@@ -71,13 +73,7 @@ exports.createStudent = async function (req, res) {
               .save()
               .then((savedStu) => {
                 res.status(200).json({
-                  output: utils.getApiOutput(
-                    {
-                      code: "SAVED_SUCCESS",
-                      student: savedStu
-                    },
-                    null
-                  )
+                  output: utils.getApiOutput(savedStu, null)
                 });
               })
               .catch((err) => {
@@ -151,7 +147,6 @@ exports.logInStudent = async function (req, res) {
  * @author Durai Raja
  */
 exports.addCourseToCart = async function (req, res) {
-  console.log("req.body", req?.body);
   try {
     await mStudent.updateOne(
       { _id: req?.body?.stuId },
@@ -160,6 +155,72 @@ exports.addCourseToCart = async function (req, res) {
     res.status(200).json({
       output: utils.getApiOutput("SUCCESS", null)
     });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+/**
+ * Fetch Student courses
+ * @param {stuId} req
+ * @param {Response courses} res
+ */
+exports.fetchStuCoursesEx = async function (req, res) {
+  let oGrpCourses = {};
+  const oReqObj = {
+    stuId: req?.body?.stuId,
+    proj: { RegCourse: 1 }
+  };
+  try {
+    const stuDetailes = await exports.findStudentsDet(oReqObj);
+    if (stuDetailes && stuDetailes[0]?.RegCourse?.length > 0) {
+      const aCrsIds = stuDetailes[0]?.RegCourse.map((crs) => crs.crsId);
+      /* fetch courses */
+      const getCourses = () => {
+        return new Promise((resolve, reject) => {
+          cCourse.fetchCoursesIn({ aCrsIds: aCrsIds }, function (response) {
+            if (response?.status === "500") {
+              reject(response.err);
+            } else if (
+              response?.status === "200" &&
+              response?.code === "NO_DATA_FOUND"
+            ) {
+              resolve("NO_DATA_FOUND");
+            } else {
+              oGrpCourses = _.groupBy(response?.data, "_id");
+              resolve("SUCCESS");
+            }
+          });
+        });
+      };
+      const crsRes = await getCourses();
+      if (crsRes === "NO_DATA_FOUND") {
+        res.status(200).json({
+          output: utils.getApiOutput(null, { code: "NO_DATA_FOUND" })
+        });
+      } else if (crsRes === "SUCCESS") {
+        const aResponse = stuDetailes[0]?.RegCourse.map((crs) => {
+          if (oGrpCourses[crs._id] && oGrpCourses[crs._id][0]) {
+            crs.code = oGrpCourses[crs._id][0].code;
+            crs.name = oGrpCourses[crs._id][0].name;
+            crs.crsPrfleImg = oGrpCourses[crs._id][0].crsPrfleImg;
+            crs.desc = oGrpCourses[crs._id][0].desc;
+          }
+          return crs;
+        });
+        res.status(200).json({
+          output: utils.getApiOutput(aResponse, null)
+        });
+      } else {
+        res.status(500).json({
+          output: utils.getApiOutput(null, crsRes)
+        });
+      }
+    } else {
+      res.status(200).json({
+        output: utils.getApiOutput(null, { code: "NO_DATA_FOUND" })
+      });
+    }
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }

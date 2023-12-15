@@ -14,7 +14,7 @@ const Courses = () => {
   const { t } = useTranslation(); //translator
   const [oCorses, setcourses] = useState([]); // corses group by course catagory
   const [tab, setTab] = useState("courses"); //current tab
-  const loginStuId = useSharedService("getStuDetailes", null, "_id"); //student id
+  const loginStuDet = useSharedService("getStuDetailes"); //student detailes
 
   /* To get all courses */
   const getCourses = async () => {
@@ -33,7 +33,7 @@ const Courses = () => {
   /* To add courses to cart */
   const addToCart = async (crsId) => {
     const oReqObj = {
-      stuId: loginStuId,
+      stuId: loginStuDet?._id,
       coursId: crsId
     };
     try {
@@ -69,7 +69,11 @@ const Courses = () => {
                   key={index}
                   className="col-md-4 mb-4 d-flex justify-content-center align-items-center"
                 >
-                  <CourseCardComponent course={crs} addToCart={addToCart} />
+                  <CourseCardComponent
+                    course={crs}
+                    addToCart={addToCart}
+                    aCartCrs={loginStuDet?.cartCourse}
+                  />
                 </div>
               ))}
           </div>

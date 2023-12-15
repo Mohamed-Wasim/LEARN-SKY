@@ -44,17 +44,15 @@
   margin-right: 15px;
   margin-top: 12px;
 }
-.prfName{
-  width:28px;
-  height:28px;
-  border-radius:50px;
-  background-color:rebeccapurple;
-  color:white;
-  font-size:10px;
-  letter-spacing:2%;
-  justify-content:center !important;
-  position: relative;
+.prfName {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
   display: flex;
-  align-items:center;
-    gap:20px;
+  overflow: hidden;
+
+  img {
+    max-width: 100%; // Ensure the image doesn't exceed the container size
+    max-height: 100%; // Ensure the image doesn't exceed the container size
+  }
 }

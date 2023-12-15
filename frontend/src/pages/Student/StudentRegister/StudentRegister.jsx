@@ -13,8 +13,13 @@ import { LskyToaster } from "../../../components/LskyToaster";
 import { useTranslation } from "react-i18next";
 import StudentRegisterSchema from "./studentRegisterSchema";
 import { createStudent } from "../../../services/studentService";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setStudent } from "../../../store/slices/studentSlice";
 
 const StudentRegister = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const style = {
     backgroundImage: `url(${image})`,
@@ -24,9 +29,10 @@ const StudentRegister = () => {
   };
   const onLogInStudent = async (frmVlus) => {
     try {
-      await createStudent(frmVlus);
+      const stuDetailes = await createStudent(frmVlus);
       LskyToaster("success", t("REGISTERED_SUCCESSFULLY"), 3000);
-      oStudentRegisterFormik.resetForm();
+      dispatch(setStudent(stuDetailes));
+      navigate("/student/home");
     } catch (err) {
       if (err && err.code === "DUP_FOUND") {
         LskyToaster("warning", t("THIS_EMAIL_ALREADY_REGISTERED"), 3000);

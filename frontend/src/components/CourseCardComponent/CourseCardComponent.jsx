@@ -1,4 +1,4 @@
-import "./CourseCardComponent.css";
+import "./CourseCardComponent.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHeart,
@@ -10,7 +10,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useTranslation } from "react-i18next";
 import LskyButton from "../LskyButton";
-const CourseCardComponent = ({ course, addToCart }) => {
+const CourseCardComponent = ({ course, addToCart, aCartCrs }) => {
+  console.log("aCartCrs", aCartCrs);
   const { t } = useTranslation(); //translator
   return (
     <Card
@@ -24,21 +25,36 @@ const CourseCardComponent = ({ course, addToCart }) => {
       className="mycard"
     >
       <Card.Img variant="top" src={course?.crsPrfleImg} />
-      <LskyButton
-        variant="secondary"
-        style={{
-          position: "absolute",
-          top: "48%",
-          left: "23%",
-          transform: "translateX(-50%)"
-        }}
-        onClick={() => {
-          console.log("course?._idcourse?._id", course);
-          addToCart(course?._id);
-        }}
-      >
-        {t("ADD_TO_CART")}
-      </LskyButton>
+      {aCartCrs?.includes(course?._id) ? (
+        <LskyButton
+          variant="secondary"
+          style={{
+            position: "absolute",
+            top: "48%",
+            left: "23%",
+            transform: "translateX(-50%)"
+          }}
+          onClick={() => {
+            console.log("course?._idcourse?._id", course);
+            addToCart(course?._id);
+          }}
+        >
+          {t("ADDED")}
+        </LskyButton>
+      ) : (
+        <LskyButton
+          variant="secondary"
+          style={{
+            position: "absolute",
+            top: "48%",
+            left: "23%",
+            transform: "translateX(-50%)"
+          }}
+        >
+          {t("ADD_TO_CART")}
+        </LskyButton>
+      )}
+
       <Card.Body className="d-flex flex-column justify-content-between">
         <Card.Title className="mt-4">{course?.name}</Card.Title>
         <span>{course?.desc}</span>
@@ -52,8 +68,12 @@ const CourseCardComponent = ({ course, addToCart }) => {
 
             <div className="IcnCont ">
               <FontAwesomeIcon icon={faGlobe} />
-              {course?.language.map((lang) => {
-                return <span style={{ marginLeft: "3px" }}>{lang},</span>;
+              {course?.language.map((lang, index) => {
+                return (
+                  <span key={index} style={{ marginLeft: "3px" }}>
+                    {lang},
+                  </span>
+                );
               })}
             </div>
 
