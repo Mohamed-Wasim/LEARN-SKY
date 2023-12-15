@@ -9,7 +9,7 @@ const AdminRoutes = () => {
   return (
     <Routes>
       {/* <Route path="*" element={<InstitutePage />} /> */}
-      <Route path="/courseses" element={<AdminCourses />} />
+      <Route path="/course" element={<AdminCourses />} />
       {/* <Route path="/courses" element={<StudentLogin />} /> */}
     </Routes>
   );

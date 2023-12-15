@@ -3,108 +3,108 @@ const mongoose = require("mongoose");
 const LandingPageHeader = new mongoose.Schema({
   headTitle: {
     type: String,
-    required: true,
+    required: true
   },
   subTitle: {
     type: String,
-    required: true,
+    required: true
   },
   stuImg: {
     type: String,
-    required: true,
+    required: true
   },
   teachImg: {
     type: String,
-    required: true,
+    required: true
   },
   crsHeadTitl: {
     type: String,
-    required: true,
+    required: true
   },
   crsSubTitl: {
     type: String,
-    required: true,
+    required: true
   },
   showCrs: {
     type: Array,
-    required: true,
+    required: true
   },
   ctgryHeadTitl: {
     type: String,
-    required: true,
+    required: true
   },
   ctgrySubTitl: {
     type: String,
-    required: true,
+    required: true
   },
-  shoeCtgrys: {
-    type: String,
-    required: true,
+  showCtgrys: {
+    type: Array,
+    required: true
   },
   midBanner: {
     type: String,
-    required: true,
+    required: true
   },
   midBnrHeader: {
     type: String,
-    required: true,
+    required: true
   },
   midBnrsubHeds: {
     type: Array,
-    required: true,
+    required: true
   },
   midBnrDesc: {
     type: String,
-    required: true,
+    required: true
   },
   midBnrHeader: {
     type: String,
-    required: true,
+    required: true
   },
   stuRevwHder: {
     type: Array,
-    required: true,
+    required: true
   },
   stuRvwSub: {
     type: String,
-    required: true,
+    required: true
   },
   showReviews: {
     type: Array,
-    required: true,
+    required: true
   },
   anlytcsbadge: {
     type: Array,
-    required: true,
+    required: true
   },
   stuRvwSub: {
     type: String,
-    required: true,
+    required: true
   },
   ftrLogo: {
     type: String,
-    required: true,
+    required: true
   },
   ftrHeder: {
     type: Array,
-    required: true,
+    required: true
   },
   ftrDesc: {
     type: Array,
-    required: true,
+    required: true
   },
   ftrphone: {
     type: String,
-    required: true,
+    required: true
   },
   ftrEmail: {
     type: String,
-    required: true,
+    required: true
   },
   ftradress: {
     type: Array,
-    required: true,
-  },
+    required: true
+  }
 });
 
 module.exports = mongoose.model("landpagehdr", LandingPageHeader);

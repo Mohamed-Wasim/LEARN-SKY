@@ -1,19 +1,25 @@
 /* RE-USABLE CODES */
-.admin-flex{
+.admin_flex{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:20px;
+    padding-right: 3%;
 }
-.header_container{
+.admin_header_container{
     border:1px solid rgba(0, 0, 0, 0.100);
-    /* box-shadow: 30 0 0 black; */
+     box-shadow: 30 0 0 black;
     height:10%;
     gap:0px;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 85%;
+    margin-left: 15%;
 }
  li{
     list-style: none;
+ }
+ .admin_icon{
+    margin-top: auto;
+    padding-top: 10%;
  }

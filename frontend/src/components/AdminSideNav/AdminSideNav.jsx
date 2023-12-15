@@ -4,16 +4,16 @@ import "./styles.scss";
 const AdminSideNav = () => {
   return (
     <div className="sidebar">
-      <h2>Dashboard</h2>
+      <div className="admin_logo"></div>
       <ul>
         <li>
-          <Link to="/dashboard">Home</Link>
+          <Link to="/admin/course">Courses</Link>
         </li>
         <li>
-          <Link to="/dashboard/users">Users</Link>
+          <Link to="/admin/users">Users</Link>
         </li>
         <li>
-          <Link to="/dashboard/products">Products</Link>
+          <Link to="/admin/products">Products</Link>
         </li>
         {/* Add more links as needed */}
       </ul>
