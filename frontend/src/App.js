@@ -29,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         errorElement: <ErrorBoundary />
+      },
+      {
+        path: "courses",
+        errorElement: <ErrorBoundary />
       }
     ]
   },
