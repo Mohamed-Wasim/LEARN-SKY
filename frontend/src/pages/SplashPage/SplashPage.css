@@ -20,12 +20,15 @@
 }
 .spCont{
     position: absolute;
-    top: 265px;
+    top: 230px;
+    /* gap:115px; */
 }
 .sp_bnr_cont{
+    display:flex;
+    gap:150px;
     align-items: center;
     margin: 0 0 0 -50px;
-    gap: 150px;
+    /* gap: 150px; */
     /* position: absolute;
     top: 250px; */
     /* display: flex;
@@ -47,7 +50,7 @@
 .sp_bnr_btn{
     display: flex;
     flex-direction: row;
-    gap:50px;
+    gap:50px !important;
 }
 .spanClr{
     color:#7F56D9;

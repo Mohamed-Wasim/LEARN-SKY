@@ -27,5 +27,7 @@
   "ADDED": "Added",
   "COURSE": "Course",
   "EDIT_COURSE": "Edit course",
-  "CREATE_NEW_COURSE": "Create new course"
+  "CREATE_NEW_COURSE": "Create new course",
+  "SIGN_IN":"SignIn",
+  "CONTACT_US":"ContactUs"
 }
