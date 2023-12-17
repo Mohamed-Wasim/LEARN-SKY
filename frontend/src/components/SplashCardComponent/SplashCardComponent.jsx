@@ -26,7 +26,7 @@ const SplashCardComponent = (props) => {
   return (
     <Card
       style={{
-        width: "24rem",
+        width: "32%",
         height: "25rem",
         boxShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
         transition: "box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out",
