@@ -1,7 +1,63 @@
+/* Your page styles here */
+// table {
+//   border-collapse: collapse;
+//   border-spacing: 0;
+//   table-layout: fixed;
+//   width: 100%;
+//   cursor: pointer;
+// }
 
+// thead {
+//   margin: 0;
+//   position: sticky;
+//   top: 0;
+//   &:hover {
+//     color: #438eb9;
+//   }
+// }
+
+// th {
+//   color: #7c9eb2;
+//   border-right: 1px solid lightgray;
+//   border-bottom: 1px solid lightgray;
+//   text-align: left;
+// }
+// tr {
+//   td,
+//   th {
+//     &:first-child {
+//       border-left: none !important;
+//     }
+//     &:last-child {
+//       border-right: none !important;
+//     }
+//   }
+// }
+// td {
+//   font-size: 13px;
+//   border-bottom: 1px solid lightgray;
+//   border-left: 1px solid lightgray;
+//   border-right: 1px solid lightgray;
+//   padding: 6px;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+//   height: 30px;
+// }
+
+// .tbl-container {
+//   border: 1px solid lightgray;
+//   width: 100% !important;
+//   overflow: auto;
+//   display: flex;
+//   justify-content: space-between;
+//   flex-direction: column;
+// }
 .table-data_list {
   background: #ffffff;
   margin: 0 !important;
+  // table-layout: fixed;
+  width: 100%;
 }
 .table-header_label tr th {
   background-color: #fafbfc;
@@ -14,6 +70,28 @@
   border: solid 1px #dfe1e5;
   background-color: #ffffff;
 }
+.table-grid_container {
+  overflow: auto;
+}
+// .table-cont td span {
+//   padding: 6px 24px;
+//   background: #e7fcba;
+//   border-radius: 20px;
+//   color: #469b1f;
+// }
+// span[target='grad-B'] {
+//   padding: 6px 24px;
+//   background: #fdf3bf !important;
+//   border-radius: 20px;
+//   color: #bf8012 !important;
+// }
+// [target='grad-F'] {
+//   padding: 6px 24px;
+//   background: #fef1f3 !important;
+//   border-radius: 20px;
+//   color: #f24b6b !important;
+// }
+
 .table-header_container {
   padding: 1.25rem 1.5rem;
   background-color: #ffffff;

@@ -1,9 +1,11 @@
 const express = require("express");
 const cCourse = require("../controllers/cCourse");
+const cCrsCatagory = require("../controllers/cCrsCatagory");
 const routes = express();
 // courses requests
-routes.post("/save-courses", cCourse.saveCourse);
+routes.post("/create", cCourse.createCourse);
 routes.post("/update-courses", cCourse.updateCourse);
-routes.post("/fetch-courses", cCourse.fetchCoursesEx);
+routes.get("/fetch", cCourse.fetchCourseEx);
+routes.post("/catagory", cCrsCatagory.fetchCourseCatagoryEx);
 
 module.exports = routes;

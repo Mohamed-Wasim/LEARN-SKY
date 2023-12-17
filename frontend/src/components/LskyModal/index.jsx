@@ -9,7 +9,7 @@ import {
   ModalFooter
 } from "react-bootstrap";
 
-function Modal(props) {
+function LskyModal(props) {
   // const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -38,4 +38,4 @@ function Modal(props) {
   );
 }
 
-export default Modal;
+export default LskyModal;

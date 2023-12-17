@@ -71,7 +71,7 @@ const CourseCardComponent = ({ course, addToCart, aCartCrs }) => {
               {course?.language.map((lang, index) => {
                 return (
                   <span key={index} style={{ marginLeft: "3px" }}>
-                    {lang},
+                    {lang.name},
                   </span>
                 );
               })}

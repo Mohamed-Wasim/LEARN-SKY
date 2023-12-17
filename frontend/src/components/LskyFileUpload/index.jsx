@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react';
-import LskyFilePreview from '@components/LskyFilePreview';
-import './styles.scss';
-import LskyMatIcon from '@components/LskyMatIcon';
-import { useDispatch } from 'react-redux';
-import { addDeleteques } from '../../store/slices/fileslice';
+import React, { useState, useRef } from "react";
+import LskyFilePreview from "../LskyFilePreview";
+import "./styles.scss";
+import LskyMatIcon from "../LskyMatIcon";
+import { useDispatch } from "react-redux";
+import { addDeleteques } from "../../store/slices/fileslice";
 
 const LskyFileUpload = (props) => {
   const dispatch = useDispatch();
@@ -51,13 +51,13 @@ const LskyFileUpload = (props) => {
 
   const checkFileType = (files) => {
     if (props.isMulti) {
-      console.log('multiple');
+      console.log("multiple");
     } else {
       const acceptedType = props.accept
         .split(/\s*,\s*/) // Split by commas and optional spaces
-        .map((format) => format.replace(/^\./, '')); // Remove the leading dot
+        .map((format) => format.replace(/^\./, "")); // Remove the leading dot
       return acceptedType.some(
-        (format) => format === files[0].name.split('.')[1]
+        (format) => format === files[0].name.split(".")[1]
       );
     }
   };
@@ -76,10 +76,10 @@ const LskyFileUpload = (props) => {
   };
 
   const clearFile = (src) => {
-    if (typeof src === 'string') {
+    if (typeof src === "string") {
       dispatch(addDeleteques(src));
     }
-    props.onSelectFiles('');
+    props.onSelectFiles("");
   };
   return (
     <div onDragOver={handleDragOver} onDrop={handleDrop}>
@@ -87,7 +87,7 @@ const LskyFileUpload = (props) => {
         <>
           <div
             ref={containerRef}
-            className={'Lsky-file_dnd'}
+            className={"Lsky-file_dnd"}
             onDragEnter={handleDragEnter}
             onDragLeave={handleDragLeave}
             onDragOver={handleDragOver}

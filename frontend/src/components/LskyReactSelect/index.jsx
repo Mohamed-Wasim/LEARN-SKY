@@ -1,7 +1,7 @@
-import React, { Suspense } from 'react';
-import Select from 'react-select';
-import './styles.scss';
-const AsyncSelect = React.lazy(() => import('react-select/async'));
+import React, { Suspense } from "react";
+import Select from "react-select";
+import "./styles.scss";
+const AsyncSelect = React.lazy(() => import("react-select/async"));
 
 /**
  * SelectControl component.
@@ -23,54 +23,54 @@ const LskyReactSelect = (props) => {
   const customStyles = {
     control: (base, state) => ({
       ...base,
-      background: '#fff',
-      borderColor: state.isFocused ? '#0D9BE1' : '#DFE1E5',
-      borderRadius: props.rad ?? '4px',
-      borderWidth: '1px',
-      fontSize: '14px',
-      color: '#091E42',
-      innerHeight: '25px',
-      padding: '0',
+      background: "#fff",
+      borderColor: state.isFocused ? "#0D9BE1" : "#DFE1E5",
+      borderRadius: props.rad ?? "4px",
+      borderWidth: "1px",
+      fontSize: "14px",
+      color: "#091E42",
+      innerHeight: "25px",
+      padding: "0",
       boxShadow: state.isFocused ? null : null,
-      '.css-1p3m7a8-multiValue': {
-        borderRadius: '4px',
-        backgroundColor: '#E2F3FB'
+      ".css-1p3m7a8-multiValue": {
+        borderRadius: "4px",
+        backgroundColor: "#E2F3FB"
       },
-      '.css-1u9des2-indicatorSeparator': {
-        display: 'none'
+      ".css-1u9des2-indicatorSeparator": {
+        display: "none"
       },
-      '.css-12a83d4-MultiValueRemove': {
-        borderBottomRightRadius: '4px !important',
-        borderTopRightRadius: '4px !important'
+      ".css-12a83d4-MultiValueRemove": {
+        borderBottomRightRadius: "4px !important",
+        borderTopRightRadius: "4px !important"
       },
-      '&:hover': {
+      "&:hover": {
         // borderColor: state.isFocused ? "red" : "blue"
       },
       ...(props.isSearch && {
-        '.css-1xc3v61-indicatorContainer': {
-          display: 'none'
+        ".css-1xc3v61-indicatorContainer": {
+          display: "none"
         },
-        '.css-15lsz6c-indicatorContainer': {
-          display: 'none'
+        ".css-15lsz6c-indicatorContainer": {
+          display: "none"
         },
-        '.css-1u9des2-indicatorSeparator': {
-          display: 'none'
+        ".css-1u9des2-indicatorSeparator": {
+          display: "none"
         }
       }),
       ...(props.isInvalid && {
-        '.control': {
-          borderColor: 'red'
+        ".control": {
+          borderColor: "red"
         }
       })
     }),
     option: (base, state) => ({
       ...base,
-      fontSize: '13px',
-      color: state.isSelected ? '#fff' : '#091E42'
+      fontSize: "13px",
+      color: state.isSelected ? "#fff" : "#091E42"
     })
   };
   const customNoOptionsMessage = ({ inputValue }) => {
-    if (inputValue === '') {
+    if (inputValue === "") {
       return null;
     }
     return null;
@@ -86,7 +86,7 @@ const LskyReactSelect = (props) => {
       <div className={` ${props.className} `}>
         {props?.isApi ? (
           <AsyncSelect
-            className={props.isInvalid ? 'is-invalid' : ''}
+            className={props.isInvalid ? "is-invalid" : ""}
             styles={customStyles}
             value={defaultValue}
             onBlur={props.onBlur}

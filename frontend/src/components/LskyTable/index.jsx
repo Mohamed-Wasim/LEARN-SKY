@@ -1,13 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-const LskyMatIcon = React.lazy(() => import('@components/LskyMatIcon'));
-const Button = React.lazy(() => import('@components/Button'));
-const LskyDropDown = React.lazy(() => import('@components/LskyDropDown'));
-const LskySearch = React.lazy(() => import('@components/LskySearch'));
-const LskyFormField = React.lazy(() => import('@components/LskyFormField'));
-const LskySideModal = React.lazy(() => import('../LskySideModal'));
-const LskyInfo = React.lazy(() => import('@components/LskyInfo'));
-import { COMMONLABEL } from '@utils/common.js';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useRef, useState } from "react";
+import { COMMONLABEL } from "../../utils/common";
+import { useTranslation } from "react-i18next";
 import {
   useReactTable,
   getCoreRowModel,
@@ -17,10 +10,18 @@ import {
   ExpandedState,
   getExpandedRowModel,
   flexRender
-} from '@tanstack/react-table';
-import './styles.scss';
-import { Stack } from 'react-bootstrap';
-import LskyTabs from '../LskyTabs';
+} from "@tanstack/react-table";
+import "./styles.scss";
+import { Stack } from "react-bootstrap";
+import LskyTabs from "../LskyTabs";
+const LskyMatIcon = React.lazy(() => import("../LskyMatIcon"));
+const LskyButton = React.lazy(() => import("../LskyButton"));
+const LskyDropDown = React.lazy(() => import("../LskyDropDown"));
+const LskySearch = React.lazy(() => import("../LskySearch"));
+const LskyFormField = React.lazy(() => import("../LskyFormField"));
+const LskySideModal = React.lazy(() => import("../LskySideModal"));
+const LskyInfo = React.lazy(() => import("../LskyInfo"));
+const Label = React.lazy(() => import("../Label"));
 const LskyTable = ({
   data,
   columns,
@@ -39,17 +40,19 @@ const LskyTable = ({
   isMore,
   tabs,
   searchFunction,
-  noHeader
+  searchPlaceholder,
+  noHeader,
+  title
 }) => {
   const { t } = useTranslation();
-  const [globalFilter, setGlobalFilter] = useState('');
+  const [globalFilter, setGlobalFilter] = useState("");
   const [sorting, setSorting] = useState([]);
-  const [lastClickedId, setLastClickedId] = useState(null);
+  // const [lastClickedId, setLastClickedId] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const searchRef = useRef(null);
   const [expanded, setExpanded] = useState({});
   const obj = {
-    id: 'select',
+    id: "select",
     header: ({ table }) => (
       <IndeterminateCheckbox
         {...{
@@ -58,7 +61,7 @@ const LskyTable = ({
           onChange: table.getToggleAllRowsSelectedHandler(),
           onClick: (e) => {
             e.preventDefault();
-            onCheckBoxClick('header', e.target.checked);
+            onCheckBoxClick("header", e.target.checked);
           }
         }}
       />
@@ -73,7 +76,7 @@ const LskyTable = ({
             onChange: row.getToggleSelectedHandler(),
             onClick: (e) => {
               e.preventDefault();
-              onCheckBoxClick('row', e.target.checked, row['original']);
+              onCheckBoxClick("row", e.target.checked, row.original);
             }
           }}
         />
@@ -82,7 +85,7 @@ const LskyTable = ({
   };
 
   const more = {
-    id: 'more',
+    id: "more",
     header: ({ table }) => <></>,
     cell: ({ row }) => (
       <div>
@@ -107,7 +110,8 @@ const LskyTable = ({
     filterFns: {},
     state: {
       sorting,
-      globalFilter
+      globalFilter,
+      expanded
     },
     onGlobalFilterChange: setGlobalFilter,
     manualPagination,
@@ -125,9 +129,7 @@ const LskyTable = ({
     noPagination,
     onCheckBoxClick,
     enableRowSelection: true,
-    state: { expanded },
-    onExpandedChange: setExpanded,
-    getExpandedRowModel: getExpandedRowModel()
+    onExpandedChange: setExpanded
   });
 
   useEffect(() => {
@@ -154,11 +156,11 @@ const LskyTable = ({
     }
   };
 
-  function IndeterminateCheckbox({ indeterminate, className = '', ...rest }) {
+  function IndeterminateCheckbox({ indeterminate, className = "", ...rest }) {
     const ref = React.useRef(null);
 
     React.useEffect(() => {
-      if (typeof indeterminate === 'boolean') {
+      if (typeof indeterminate === "boolean") {
         ref.current.indeterminate = !rest.checked && indeterminate;
       }
     }, [ref, indeterminate]);
@@ -173,14 +175,22 @@ const LskyTable = ({
   }
 
   const MoreFunctions = ({ menus, row }) => {
-    const modifiedMenus = menus.map((menu) => ({
+    const modifiedMenus = menus.map((menu, index) => ({
       ...menu,
+      text: menu.dynamictext
+        ? menu.tochangetext(
+            menu.dynamictext === "."
+              ? { data: row.original, index }
+              : row.original[menu.dynamictext]
+          )
+        : menu.text,
+      hide: menu.setHide && menu.setHide(row.original),
       onClick: menu?.onClick ? () => menu.onClick(row.original) : undefined,
       onChange: menu?.onChange ? () => menu.onChange(row.original) : undefined
     }));
     return (
       <LskyDropDown
-        toggle={<LskyMatIcon name="more_horiz" />}
+        toggle={<LskyMatIcon name="more_horiz" className="text-primary" />}
         menus={modifiedMenus}
         variant="transparent toggle-transparent"
       />
@@ -194,7 +204,7 @@ const LskyTable = ({
             <Stack direction="horizontal" gap="3">
               {tabs && (
                 <LskyTabs>
-                  <Button
+                  <LskyButton
                     variant="secondary"
                     eventKey="home"
                     title="home"
@@ -202,28 +212,29 @@ const LskyTable = ({
                     disabled={!data || data.length === 0}
                   >
                     Left
-                  </Button>
-                  <Button
+                  </LskyButton>
+                  <LskyButton
                     variant="secondary"
                     eventKey="tabs"
                     title="tabs"
                     tabProps={{}}
                   >
                     Middle
-                  </Button>
-                  <Button
+                  </LskyButton>
+                  <LskyButton
                     variant="secondary"
                     eventKey="nab"
                     title="nab"
                     tabProps={{ disabled: true }}
                   >
                     Right
-                  </Button>
+                  </LskyButton>
                 </LskyTabs>
               )}
+              {title && <Label>{title}</Label>}
               <LskySearch
                 className="ms-auto"
-                placeholder={t('SEARCH')}
+                placeholder={searchPlaceholder ?? t("SEARCH")}
                 sref={searchRef}
                 onChange={(event) =>
                   searchFunction
@@ -237,14 +248,14 @@ const LskyTable = ({
               />
               {/* for later use */}
               {false && (
-                <Button
+                <LskyButton
                   icon="sort"
                   variant="secondary"
                   disabled={!data || data.length === 0}
                 />
               )}
               {false && (
-                <Button
+                <LskyButton
                   icon="config"
                   variant="secondary"
                   onClick={() => setShowSettings(true)}
@@ -252,11 +263,11 @@ const LskyTable = ({
                 />
               )}
               {actions &&
-                Object.keys(actions).filter((k) => k !== 'new').length > 0 && (
+                Object.keys(actions).filter((k) => k !== "new").length > 0 && (
                   <LskyDropDown
                     toggle="Action"
                     menus={Object.keys(actions)
-                      .filter((k) => k !== 'new')
+                      .filter((k) => k !== "new")
                       .map((m) => {
                         return actions[m];
                       })}
@@ -265,88 +276,88 @@ const LskyTable = ({
                   />
                 )}
               {actions && actions.new ? (
-                <Button {...actions.new}>{t('ADD')}</Button>
+                <LskyButton {...actions.new}>{t("ADD")}</LskyButton>
               ) : null}
             </Stack>
           </div>
         )}
         {data.length > 0 && table.getRowModel().rows.length > 0 ? (
           <>
-            <table
-              className="table table-data_list"
-              style={{ tableLayout: 'fixed', width: '100%' }}
-            >
-              <thead className="table-header_label">
-                {table.getHeaderGroups().map((headerGroup) => (
-                  <tr key={headerGroup.id}>
-                    {headerGroup.headers.map((header) => {
-                      return (
-                        <th
-                          key={header.id}
-                          colSpan={header.colSpan}
-                          // style={{ width: header.getSize() }}
-                          className="fs-3 text-primary fw-bold p-4"
-                        >
-                          {header.isPlaceholder ? null : (
-                            <div
-                              {...{
-                                onClick: header.column.getToggleSortingHandler()
-                              }}
-                            >
-                              {flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                              {{
-                                asc: <LskyMatIcon name="expand_less" />,
-                                desc: <LskyMatIcon name="expand_more" />
-                              }[header.column.getIsSorted()] ?? null}
-                            </div>
-                          )}
-                        </th>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </thead>
-              <tbody>
-                {table.getRowModel().rows.map((row) => {
-                  return (
-                    <tr key={row.id}>
-                      {row.getVisibleCells().map((cell, index) => {
+            <div className="table-grid_container">
+              <table className="table table-data_list">
+                <thead className="table-header_label">
+                  {table.getHeaderGroups().map((headerGroup) => (
+                    <tr key={headerGroup.id}>
+                      {headerGroup.headers.map((header) => {
                         return (
-                          <td
-                            key={cell.id}
-                            className="fs-3 text-primary p-4"
-                            style={{ width: cell.column.getSize() }}
+                          <th
+                            key={header.id}
+                            colSpan={header.colSpan}
+                            // style={{ width: header.getSize() }}
+                            className="fs-3 text-primary fw-bold p-4"
                           >
-                            {row.getCanExpand() &&
-                              index === 0 &&
-                              (row.getIsExpanded() ? (
-                                <LskyMatIcon
-                                  name="expand_less"
-                                  onClick={row.getToggleExpandedHandler()}
-                                  className={'cursor-pointer'}
-                                />
-                              ) : (
-                                <LskyMatIcon
-                                  name="expand_more"
-                                  onClick={row.getToggleExpandedHandler()}
-                                  className={'cursor-pointer'}
-                                />
-                              ))}
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
+                            {header.isPlaceholder ? null : (
+                              <div
+                                {...{
+                                  onClick:
+                                    header.column.getToggleSortingHandler()
+                                }}
+                              >
+                                {flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                                {{
+                                  asc: <LskyMatIcon name="expand_less" />,
+                                  desc: <LskyMatIcon name="expand_more" />
+                                }[header.column.getIsSorted()] ?? null}
+                              </div>
                             )}
-                          </td>
+                          </th>
                         );
                       })}
                     </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                  ))}
+                </thead>
+                <tbody>
+                  {table.getRowModel().rows.map((row) => {
+                    return (
+                      <tr key={row.id}>
+                        {row.getVisibleCells().map((cell, index) => {
+                          return (
+                            <td
+                              key={cell.id}
+                              className="fs-3 text-primary p-4"
+                              style={{ width: cell.column.getSize() }}
+                            >
+                              {row.getCanExpand() &&
+                                index === 0 &&
+                                (row.getIsExpanded() ? (
+                                  <LskyMatIcon
+                                    name="expand_less"
+                                    onClick={row.getToggleExpandedHandler()}
+                                    className={"cursor-pointer"}
+                                  />
+                                ) : (
+                                  <LskyMatIcon
+                                    name="expand_more"
+                                    onClick={row.getToggleExpandedHandler()}
+                                    className={"cursor-pointer"}
+                                  />
+                                ))}
+                              {flexRender(
+                                cell.column.columnDef.cell,
+                                cell.getContext()
+                              )}
+                            </td>
+                          );
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
             <div className="table-footer">
               <div />
               {!noPagination && (
@@ -354,13 +365,13 @@ const LskyTable = ({
                   <div>
                     <p className="m-0 fs-3 text-secondary">
                       Showing
-                      {table.getState().pagination.pageIndex + 1} of{' '}
+                      {table.getState().pagination.pageIndex + 1} of{" "}
                       {table.getPageCount()}
                     </p>
                   </div>
 
                   <div className="table-pagination_btn">
-                    <Button
+                    <LskyButton
                       variant="secondary"
                       onClick={() => {
                         if (manualPagination) {
@@ -374,8 +385,8 @@ const LskyTable = ({
                       disabled={!table.getCanPreviousPage()}
                     >
                       <LskyMatIcon name="first_page" />
-                    </Button>
-                    <Button
+                    </LskyButton>
+                    <LskyButton
                       variant="secondary"
                       onClick={() => {
                         if (manualPagination) {
@@ -389,8 +400,8 @@ const LskyTable = ({
                       disabled={!table.getCanPreviousPage()}
                     >
                       Prev
-                    </Button>
-                    <Button
+                    </LskyButton>
+                    <LskyButton
                       variant="primary"
                       onClick={() => {
                         if (manualPagination) {
@@ -404,8 +415,8 @@ const LskyTable = ({
                       disabled={!table.getCanNextPage()}
                     >
                       Next
-                    </Button>
-                    <Button
+                    </LskyButton>
+                    <LskyButton
                       variant="secondary"
                       onClick={() => {
                         if (manualPagination) {
@@ -419,9 +430,9 @@ const LskyTable = ({
                       disabled={!table.getCanNextPage()}
                     >
                       <LskyMatIcon name="last_page" />
-                    </Button>
+                    </LskyButton>
                     <span className="fs-3 text-primary ps-1">Page :</span>
-                    <input
+                    <LskyFormField
                       type="number"
                       max={table.getPageCount()}
                       min={1}
@@ -459,7 +470,7 @@ const LskyTable = ({
         ) : (
           <LskyInfo
             icon="info"
-            message={t('NO_DATA_FOUND')}
+            message={t("NO_DATA_FOUND")}
             highlight="Information"
           />
         )}
@@ -468,7 +479,7 @@ const LskyTable = ({
         show={showSettings}
         handleClose={setShowSettings}
         t={t}
-        title={'SETTINGS'}
+        title={"SETTINGS"}
       >
         <div>
           <p>Visible columns</p>
@@ -489,5 +500,4 @@ const LskyTable = ({
     </>
   );
 };
-
 export default LskyTable;

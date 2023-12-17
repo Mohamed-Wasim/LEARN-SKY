@@ -1,6 +1,6 @@
-import LskyMatIcon from '@components/LskyMatIcon';
-import LskyInput from '@components/LskyInput';
-import './styles.scss';
+import LskyMatIcon from "../LskyMatIcon";
+import LskyInput from "../LskyInput";
+import "./styles.scss";
 const Search = (props) => {
   return (
     <div className={`search ms-auto ${props.size}`}>

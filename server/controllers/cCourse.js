@@ -1,31 +1,30 @@
 const express = require("express");
 const mCourse = require("../models/mCourse");
 const _ = require("underscore");
+const utils = require("../routes/apputil");
 
-exports.saveCourse = function (req, res) {
-  console.log("is coming");
-  res.status(201).json({ code: "SAVED_SUCCESS" });
-  return;
+exports.createCourse = function (req, res) {
   const oInputData = req.body;
   const newCourse = new mCourse({
     code: oInputData.code,
     name: oInputData.name,
-    description: oInputData.description,
+    desc: oInputData.desc,
+    crsType: oInputData.crsType,
+    crsCat: oInputData.crsCat,
     actulFee: oInputData.actulFee,
     discFee: oInputData.discFee,
     duration: oInputData.duration,
-    regCount: oInputData.regCount,
-    offers: oInputData.offers
+    offers: oInputData.offers,
+    topics: oInputData.topics,
+    languages: oInputData.languages
   });
   newCourse
     .save()
-    .then((savedCourse) => {
-      console.log("Course saved successfully");
-      res.status(201).json({ code: "SAVED_SUCCESS" });
+    .then((docs) => {
+      res.status(200).json({ output: utils.getApiOutput(docs, null) });
     })
     .catch((err) => {
-      console.error("Error saving the course:", err);
-      res.status(500).json({ error: "Unknown Error saving the course" });
+      res.status(500).json({ output: utils.getApiOutput(null, err) });
     });
 };
 
@@ -455,4 +454,26 @@ exports.fetchCoursesIn = async function (oReq, callback) {
   } catch (error) {
     callback({ status: "500", err });
   }
+};
+
+/**
+ * Fetch course  request function
+ * @response {Response course type} res
+ */
+exports.fetchCourseEx = function (req, res) {
+  const oQuery = {
+    $and: [{ status: "A" }]
+  };
+  // if (req.body.TypeNm) {
+  //   oQuery["$and"].push({ TypeNm: req.body.TypeNm });
+  // }
+
+  mCourse
+    .find(oQuery, {}, { lean: true })
+    .then((docs) => {
+      res.status(200).json({ output: utils.getApiOutput(docs, null) });
+    })
+    .catch((err) => {
+      res.status(500).json({ output: utils.getApiOutput(null, err) });
+    });
 };
