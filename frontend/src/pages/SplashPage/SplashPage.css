@@ -131,8 +131,9 @@
 }
 .sp_ftr_crdcont{
     position:absolute;
-    top:-30px;
-    left:15%;
+    top:-15%;
+    left:10%;
+    gap:0 !important;
 }
 .sp_ftr_sec_cont{
     display:inline-block;
