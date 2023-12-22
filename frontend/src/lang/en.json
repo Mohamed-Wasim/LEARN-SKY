@@ -55,5 +55,14 @@
   "HOURS": "Hours",
   "NO_COURSE_FOUND": "No course found!",
   "INFORMATION": "Information",
-  "COURSE_LIST": "Course list"
+  "COURSE_LIST": "Course list",
+  "COURSES": "Courses",
+  "STUDENTS": "Students",
+  "JOBS": "Jobs",
+  "BATCHES": "Batches",
+  "TRAINERS": "Trainers",
+  "ENQUIRIES": "Enquiries",
+  "LIST": "List",
+  "ADD_STUDENT": "Add student",
+  "COMPLETED_STUDENT": "Completed student"
 }

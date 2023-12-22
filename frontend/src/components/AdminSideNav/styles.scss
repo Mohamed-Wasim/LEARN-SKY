@@ -1,49 +1,93 @@
-/* Sidebar.css */
-
 .sidebar {
   height: 100vh;
   position: fixed;
   top: 0%;
-  width: 15%;
+  width: 4%;
   border-radius: 12px;
-  padding: 1.5rem;
-  background-color: #ffffff;
+  background-color: #F4F5FA;
   box-shadow:
-    0px 4px 4px 0px rgba(9, 30, 66, 0.25), /* Updated the blur radius */
+    0px 4px 4px 0px rgba(9, 30, 66, 0.25),
     0px 2px 1px 0px rgba(9, 30, 66, 0.05);
+  transition: all 0.5s;
+  z-index: 99999;
+  overflow: hidden;
+
+  .admin_nav_item_icon {
+    display: inline-block;
+    transform: translateX(-50%);
+    // margin: 0 500px 0 0 !important;
+  }
 }
-  
-  .sidebar h2 {
-    color: rgb(16, 15, 15);
-    text-align: center;
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    padding: 10px;
-  }
-  
-  .sidebar a {
-    text-decoration: none;
-    color: rgb(19, 18, 18);
-    font-size: 18px;
-  }
-  
-  .sidebar a:hover {
-    color: rgb(138, 144, 236)
 
-  }
-  
-  .main-content {
-    margin-left: 250px;
-    padding: 20px;
+.sidebar:hover {
+  width: 15%;
+  overflow: scroll;
+
+  .admin_logo {
+    height: 22%
   }
 
-  .admin_logo{
-    height: 20%;
+  .admin_subnav_item {
+    padding-left: 40px !important;
+    display: block;
   }
-  
+
+  .admin_header_container {
+    padding-left: 15%;
+  }
+}
+
+.admin_logo {
+  height: 6%;
+  position: sticky;
+  top: 0%;
+  // background-color: red;
+  z-index: 999;
+}
+
+
+.sisenav_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.admin_nav_item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Roboto', sans-serif;
+  padding: 10px 25px;
+  cursor: pointer;
+  margin-top: 10px;
+  // margin-right: 10px;
+  border-radius: 0px 25px 25px 0px;
+  transition: transform 0.5s ease, background-color 0.5s ease;
+  font-size: 14px;
+  width: 95%;
+}
+
+.main_nav {
+  justify-content: space-between;
+}
+
+.admin_nav_item_icon {
+  margin-right: 1% !important; // Adjust the margin as needed
+}
+
+.admin_nav_item:hover {
+  background-image: linear-gradient(to right, #efe8fb, #d6c5f5);
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  align-items: center;
+  margin-right: 15%;
+}
+
+.admin_subnav_item {
+  display: none;
+
+}

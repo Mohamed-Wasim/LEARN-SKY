@@ -61,6 +61,7 @@ const AdminCourseForm = () => {
         return;
       } else {
         LskyToaster("success", t("SAVED_SUCCESSFULLY"), 3000);
+        navigate("/admin/courses");
       }
       oCourseFormik.resetForm();
     } catch (err) {

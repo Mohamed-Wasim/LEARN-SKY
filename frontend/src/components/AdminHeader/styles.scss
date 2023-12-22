@@ -1,25 +1,40 @@
 /* RE-USABLE CODES */
-.admin_flex{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
+.admin_flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
     padding-right: 3%;
 }
-.admin_header_container{
-    border:1px solid rgba(0, 0, 0, 0.100);
-     box-shadow: 30 0 0 black;
-    height:10%;
-    gap:0px;
+
+.admin_header_container {
+    height: 10%;
+    gap: 0px;
     position: fixed;
     top: 0;
-    width: 85%;
-    margin-left: 15%;
+    width: 96%;
+    margin-left: 4%;
+    background-color: #F4F5FA;
 }
- li{
+
+li {
     list-style: none;
- }
- .admin_icon{
+}
+
+.admin_icon {
     margin-top: auto;
     padding-top: 10%;
- }
+}
+
+.scrolled {
+    background-color: #FDFDFD;
+    border: 1px solid rgba(0, 0, 0, 0.100);
+    box-shadow: 30px 0 0 black;
+    z-index: 999;
+    transition: background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-profile-image {
+    width: 40px;
+    height: 40px;
+}

@@ -37,7 +37,9 @@ const BatchList = () => {
       },
       {
         accessorKey: "crsType",
-        header: () => <span>{t("COURSE_TYPE").toUpperCase()}</span>
+        header: () => <span>{t("COURSE_TYPE").toUpperCase()}</span>,
+        cell: (info) =>
+          info.row?.original?.crsType === "FIX" ? "Fixed" : "Flexible"
       },
       {
         accessorKey: "crsCat",
@@ -53,6 +55,7 @@ const BatchList = () => {
       const aCourseList = await getCourseList();
       setCourseTblData(aCourseList);
     } catch (err) {
+      console.log("err", err);
       LskyToaster(
         "error",
         t("UNKNOWN_ERROR_PLEASE_CONTACT_YOUR_ADMINISTRATOR"),
@@ -91,6 +94,7 @@ const BatchList = () => {
           />
         </>
       )}
+      <div style={{ height: "100vh" }}> jjjjjjjjjjjjjjjjjj</div>
     </>
   );
 };

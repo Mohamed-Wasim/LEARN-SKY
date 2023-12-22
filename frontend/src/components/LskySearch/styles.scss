@@ -1,5 +1,6 @@
 .search {
   position: relative;
+
   span {
     position: absolute;
     left: 1rem;
@@ -9,6 +10,7 @@
     font-weight: 600;
   }
 }
+
 .search-input {
   padding-left: 2.875rem !important;
   border: solid 2px #dfe1e5;

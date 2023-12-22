@@ -7,8 +7,7 @@ const AdminHome = () => {
   return (
     <>
       {/* <AdminSideNav /> */}
-
-      <div className="">
+      <div className=".sidbarref">
         <AdminSideNav />
       </div>
       <div className="">

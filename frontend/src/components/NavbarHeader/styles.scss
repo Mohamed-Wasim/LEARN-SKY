@@ -1,20 +1,22 @@
-.header_container{
-    /* box-shadow: 30 0 0 black; */
-    height:60px;
-    margin-bottom:20px;
-    gap:0px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header_container {
+  /* box-shadow: 30 0 0 black; */
+  height: 60px;
+  margin-bottom: 20px;
+  gap: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.logo{
+
+.logo {
   padding: 0;
   margin-left: 3%;
 }
 
-.navs_container{
+.navs_container {
   display: flex;
 }
+
 /* Add this CSS in your stylesheet */
 .navs {
   list-style: none;
@@ -24,24 +26,26 @@
 }
 
 .navs li {
-  // margin-right: 30px;
-  // margin-top: 12px;
+  margin-right: 30px;
+  margin-top: 12px;
 }
 
 .navs a {
   text-decoration: none;
   color: rgb(49, 46, 46);
-  transition: color 0.3s ease; /* Add a smooth transition for the color change */
+  transition: color 0.3s ease;
+  /* Add a smooth transition for the color change */
 }
 
 .navs a.selected {
-  color: blue; /* Set the color for the selected link */
+  color: blue;
+  /* Set the color for the selected link */
 }
-.icons_container{
+
+.icons_container {
   display: flex;
 }
-.nav_icon{
-}
+
 .prfName {
   width: 28px;
   height: 28px;
